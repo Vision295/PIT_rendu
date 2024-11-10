@@ -3,7 +3,7 @@ declare -A matrix
 size_x=0 size_y=0 x_b=0 y_b=0 x_f=0 y_f=0
 
 read_grid() {
-    # reads grid from file grid.txt to get its corresponding value in a matrix (without the borders)
+    # reads grid from file super_secret_maze.txt to get its corresponding value in a matrix (without the borders)
     local j=-1 row=0
     # reading the file
     while IFS= read -r line || [[ -n "$line" ]]; do
@@ -30,7 +30,7 @@ read_grid() {
                 ((row++))
             fi
         done
-    done < "grid.txt"
+    done < "super_secret_maze.txt"
     # GLOBAL VAR : size_y
     size_y=$row
 }
@@ -48,9 +48,9 @@ print_matrix() {
 }
 
 write_grid_to_file() {
-    # prints the grid in the file : grid.txt
+    # prints the grid in the file : super_secret_maze.txt
     # prints the grid with the borders all arround
-    exec 3> grid.txt
+    exec 3> super_secret_maze.txt
     # upper grid
     for ((i=0; i<size_x+2; i++)); do 
         echo -n "- " >&3
