@@ -1,0 +1,55 @@
+WELCOME TO THE .......................
+...
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+THE BASH AUTHORIZATION LEARNING MAZE FOR JUNIOR DEVELOPERS WHO WANT TO LEARN BASH CHMOD
+AKA
+------------------------THE MAZE--------------------
+
+
+
+
+
+The goal of this game is to go from B (the beginning) to F (the finishline)
+To achieve this goal you must change the authorizations of the files up, right, left and down to be able to move
+Good luck !!!
+
+ps : to start the game do this command "./main.bash &"
+ps2 : the maze is in the file grid.txt
