@@ -50,14 +50,14 @@ print_matrix() {
 
 
 write_grid_to_file() {
-    write_on_file game_data/super_secret_maze.txt
-    write_on_file maze.txt
+    write_on_file_public
+    write_on_file_private
 }
 
-write_on_file() {
+write_on_file_public() {
     # prints the grid in the file : game_data/super_secret_maze.txt
     # prints the grid with the borders all arround
-    exec 3> $1
+    exec 3> game_data/super_secret_maze.txt
     # upper grid
     for ((i=0; i<size_x+2; i++)); do 
         echo -n "- " >&3
@@ -77,6 +77,15 @@ write_on_file() {
     done
     echo >&3
     exec 3>&-
+}
+
+write_on_file_private() {
+    count=0
+    while [ -n "${moves["$count,0"]}" ]; do
+        matrix[$moves["$count,0"]]
+        
+        ((count++))
+    done
 }
 
 get_all_pos() {
