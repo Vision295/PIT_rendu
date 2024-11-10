@@ -54,7 +54,7 @@ write_grid_to_file() {
     write_on_file_private
 }
 
-write_on_file_public() {
+write_on_file_private() {
     # prints the grid in the file : game_data/super_secret_maze.txt
     # prints the grid with the borders all arround
     exec 3> game_data/super_secret_maze.txt
@@ -79,13 +79,45 @@ write_on_file_public() {
     exec 3>&-
 }
 
-write_on_file_private() {
+write_on_file_public() {
     count=0
     while [ -n "${moves["$count,0"]}" ]; do
-        matrix[$moves["$count,0"]]
+        matrix["$moves["$count,0"],$moves["$count,1"]"] = 1  
+        echo $count
+        echo "${matrix[$moves[$count,0],$moves[$count,1]]}"
         
         ((count++))
     done
+
+    # prints the grid in the file : maze.txt
+    # prints the grid with the borders all arround
+    exec 3> maze.txt
+    # upper grid
+    for ((i=0; i<size_x+2; i++)); do 
+        echo -n "- " >&3
+    done
+    echo >&3
+    # core grid with spaces between and walls at the beginning and at the end
+    for ((i=0; i<size_y; i++)); do
+        echo -n "| " >&3
+        for ((j=0; j<size_x; j++)); do
+            if [ "$matrix["$i,$j"]" = "1" ]; then
+                echo -n "0 " >&3
+            elif [ "$matrix["$i,$j"]" != "0" ]; then
+                echo -n "${matrix[$i,$j]} " >&3
+            else 
+                echo -n "X " >&3
+            fi
+        done
+        echo "|" >&3
+    done
+    # lower grid
+    for ((i=0; i<size_x+2; i++)); do 
+        echo -n "- " >&3
+    done
+    echo >&3
+    exec 3>&-
+    
 }
 
 get_all_pos() {
