@@ -1,5 +1,6 @@
 #!/bin/bash
 declare -A matrix
+declare -A moves
 size_x=0 size_y=0 x_b=0 y_b=0 x_f=0 y_f=0
 
 read_grid() {
