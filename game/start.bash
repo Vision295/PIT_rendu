@@ -10,4 +10,4 @@ while IFS= read -r line; do
     done
     echo
     sleep 0.1
-done < "intro.txt"
+done < "game_data/intro.txt"
