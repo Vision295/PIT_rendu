@@ -24,4 +24,3 @@ while [ $x_b -lt $(($size_x-1)) ] && [ "${matrix[$y_b,$(($x_b+1))]}" != "X" ]; d
     fi
 done
 write_grid_to_file
-print_matrix
