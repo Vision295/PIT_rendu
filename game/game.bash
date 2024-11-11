@@ -38,9 +38,9 @@ read_grid() {
 
 print_matrix() {
     # Print the matrix (for demonstration)
-    for ((i=0; i<y; i++))
+    for ((i=0; i<size_y; i++))
     do
-        for ((j=0; j<x; j++))
+        for ((j=0; j<size_x; j++))
         do
             echo -n "${matrix[$i,$j]} "
         done
@@ -82,9 +82,8 @@ write_on_file_private() {
 write_on_file_public() {
     count=0
     while [ -n "${moves["$count,0"]}" ]; do
-        matrix["$moves["$count,0"],$moves["$count,1"]"] = 1  
-        echo $count
-        echo "${matrix[$moves[$count,0],$moves[$count,1]]}"
+        vali="${moves["$count,1"]}" valj="${moves["$count,0"]}"
+        matrix["$vali,$valj"]=1
         
         ((count++))
     done
@@ -101,9 +100,9 @@ write_on_file_public() {
     for ((i=0; i<size_y; i++)); do
         echo -n "| " >&3
         for ((j=0; j<size_x; j++)); do
-            if [ "$matrix["$i,$j"]" = "1" ]; then
+            if [ "${matrix["$i,$j"]}" = "1" ]; then
                 echo -n "0 " >&3
-            elif [ "$matrix["$i,$j"]" != "0" ]; then
+            elif [ "${matrix["$i,$j"]}" != "0" ]; then
                 echo -n "${matrix[$i,$j]} " >&3
             else 
                 echo -n "X " >&3
