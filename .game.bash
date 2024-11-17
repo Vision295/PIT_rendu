@@ -4,7 +4,7 @@ declare -A moves
 size_x=0 size_y=0 x_b=0 y_b=0 x_f=0 y_f=0
 
 read_grid() {
-    # reads grid from file game_data/super_secret_maze.txt to get its corresponding value in a matrix (without the borders)
+    # reads grid from file super_secret_maze.txt to get its corresponding value in a matrix (without the borders)
     local j=-1 row=0
     # reading the file
     while IFS= read -r line || [[ -n "$line" ]]; do
@@ -31,7 +31,7 @@ read_grid() {
                 ((row++))
             fi
         done
-    done < "game_data/super_secret_maze.txt"
+    done < "./.data/super_secret_maze.txt"
     # GLOBAL VAR : size_y
     size_y=$row
 }
@@ -55,9 +55,9 @@ write_grid_to_file() {
 }
 
 write_on_file_private() {
-    # prints the grid in the file : game_data/super_secret_maze.txt
+    # prints the grid in the file : super_secret_maze.txt
     # prints the grid with the borders all arround
-    exec 3> game_data/super_secret_maze.txt
+    exec 3> ./.data/super_secret_maze.txt
     # upper grid
     for ((i=0; i<size_x+2; i++)); do 
         echo -n "- " >&3
@@ -90,7 +90,7 @@ write_on_file_public() {
 
     # prints the grid in the file : maze.txt
     # prints the grid with the borders all arround
-    exec 3> maze.txt
+    exec 3> ./maze.txt
     # upper grid
     for ((i=0; i<size_x+2; i++)); do 
         echo -n "- " >&3
@@ -120,8 +120,8 @@ write_on_file_public() {
 }
 
 get_all_pos() {
-    # function to get the position of the player and the position of the finish point and store those values in a file called game_data/game_data/data.txt
-    exec 3< "game_data/data.txt"
+    # function to get the position of the player and the position of the finish point and store those values in a file called game_data/./.data/data.txt
+    exec 3< "./.data/data.txt"
     read -r x_b <&3  
     read -r y_b <&3  
     read -r x_f <&3  
@@ -131,13 +131,13 @@ get_all_pos() {
 
 change_all_pos() {
     # function to set the new player's position ($1 and $2) and the new finish position ($3 and $4)
-    echo "$1" > game_data/data.txt
-    echo "$2" >> game_data/data.txt
-    echo "$3" >> game_data/data.txt
-    echo "$4" >> game_data/data.txt
+    echo "$1" > ./.data/data.txt
+    echo "$2" >> ./.data/data.txt
+    echo "$3" >> ./.data/data.txt
+    echo "$4" >> ./.data/data.txt
 }
 
-start() {
+fetch_data() {
     read_grid
     get_all_pos
 }

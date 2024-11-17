@@ -1,0 +1,21 @@
+WELCOME TO THE .......................
+...
+...
+
+
+
+------------------------THE MAZE--------------------
+
+Welcome to the Maze, where every step you take is a step deeper into the unknown.
+The path twists and turns, but only the truly courageous can navigate its traps and illusions.
+The exit is out there... but will you find it before it claims you?
+
+
+Your goal is to go from B (the beginning) to F (the finishline).
+To achieve this goal you must change the authorizations of the files up, right, left and down to be able to move.
+Once a direction is authorized, you keeps moving until you take action to turn or stop.
+Good luck !!!
+
+
+ps : the maze is in the file maze.txt
+

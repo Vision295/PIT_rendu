@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./game.bash
+source ./.game.bash
 
 get_all_pos
 read_grid
